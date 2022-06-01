@@ -45,6 +45,7 @@ public class ButtonHandler : MonoBehaviour
         {
             currentDisplay.GetComponent<SpriteRenderer>().sprite
                 = Resources.Load<Sprite>("Sprites/wall" + currentDisplay.CurrentWall);
+            currentDisplay.CurrentState = DisplayImage.State.normal;
         }
     }
 }
