@@ -29,13 +29,22 @@ public class ButtonHandler : MonoBehaviour
     
     public void OnClickZoomReturn()
     {
-        GameObject.Find("displayImage").GetComponent<DisplayImage>().CurrentState = DisplayImage.State.normal;
-        var zoomInObjects = FindObjectsOfType<ZoomInObject>();
-        foreach(var zoomInObject in zoomInObjects)
+        if (currentDisplay.CurrentState == DisplayImage.State.zoom)
         {
-            zoomInObject.gameObject.layer = 0;
+            GameObject.Find("displayImage").GetComponent<DisplayImage>().CurrentState = DisplayImage.State.normal;
+            var zoomInObjects = FindObjectsOfType<ZoomInObject>();
+            foreach (var zoomInObject in zoomInObjects)
+            {
+                zoomInObject.gameObject.layer = 0;
+            }
+            Camera.main.orthographicSize = initialCameraSize;
+            Camera.main.transform.position = initialCameraposition;
         }
-        Camera.main.orthographicSize = initialCameraSize;
-        Camera.main.transform.position = initialCameraposition;
+
+        else
+        {
+            currentDisplay.GetComponent<SpriteRenderer>().sprite
+                = Resources.Load<Sprite>("Sprites/wall" + currentDisplay.CurrentWall);
+        }
     }
 }
