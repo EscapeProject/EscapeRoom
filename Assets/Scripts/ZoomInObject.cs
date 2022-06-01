@@ -40,14 +40,14 @@ public class ZoomInObject : MonoBehaviour, IInteractable
 
         if (Camera.main.transform.position.y + height > cameraBounds.transform.position.y + cameraBounds.GetComponent<BoxCollider2D>().size.y / 2)
         {
-            Camera.main.transform.position += new Vector3(cameraBounds.transform.position.y + cameraBounds.GetComponent<BoxCollider2D>().size.y / 2 -
-                (Camera.main.transform.position.y + height), 0, 0);
+            Camera.main.transform.position += new Vector3(0, cameraBounds.transform.position.y + cameraBounds.GetComponent<BoxCollider2D>().size.y / 2 -
+                (Camera.main.transform.position.y + height), 0);
         }
 
-        if (Camera.main.transform.position.y - height > cameraBounds.transform.position.y - cameraBounds.GetComponent<BoxCollider2D>().size.y / 2)
+        if (Camera.main.transform.position.y - height < cameraBounds.transform.position.y - cameraBounds.GetComponent<BoxCollider2D>().size.y / 2)
         {
-            Camera.main.transform.position += new Vector3(cameraBounds.transform.position.y - cameraBounds.GetComponent<BoxCollider2D>().size.y / 2 -
-                (Camera.main.transform.position.y - height), 0, 0);
+            Camera.main.transform.position += new Vector3(0, cameraBounds.transform.position.y - cameraBounds.GetComponent<BoxCollider2D>().size.y / 2 -
+                (Camera.main.transform.position.y - height), 0);
         }
     }
 }
