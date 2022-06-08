@@ -6,7 +6,7 @@ public class NumberLock : MonoBehaviour
 {
     public string Password;
 
-    private Sprite[] numberSprites;
+    public Sprite[] numberSprites;
 
     public int[] currentIndividualindex = { 0, 0, 0, 0 };
 
