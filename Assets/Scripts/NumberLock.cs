@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class NumberLock : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public string Password;
 
-    // Update is called once per frame
-    void Update()
+    private Sprite[] numberSprites;
+
+    public int[] currentIndividualindex = { 0, 0, 0, 0 };
+
+    private void Start()
     {
-        
+        LoadAllNumberSprites();
+    }
+    private void LoadAllNumberSprites()
+    {
+        numberSprites = Resources.LoadAll<Sprite>("Sprites/numbers");
     }
 }
