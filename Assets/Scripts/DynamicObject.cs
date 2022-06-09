@@ -29,8 +29,13 @@ public class DynamicObject : MonoBehaviour, IInteractable
         if (inventory.GetComponent<Inventory>().currentSlot.gameObject.transform.GetChild(0).GetComponent<Image>().sprite.name == UnlockItem || UnlockItem == "")
         {
             ChangedStateSprite.SetActive(true);
+            this.gameObject.layer = 2;
+
+            if (Property == InteractionProperty.simple_interaction) return;
             inventory.GetComponent<Inventory>().currentSlot.GetComponent<Slot>().ClearSlots();
             AccessObject.SetActive(true);
+
         }
+
     }
 }
