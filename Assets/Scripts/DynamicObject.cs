@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DynamicObejct : MonoBehaviour, IInteractable
+public class DynamicObject : MonoBehaviour, IInteractable
 {
     [SerializeField]
     private GameObject inventory;
@@ -12,11 +12,15 @@ public class DynamicObejct : MonoBehaviour, IInteractable
 
     public GameObject ChangedStateSprite;
 
+    public enum InteractionProperty { simple_interaction, access_interaction}
+    public InteractionProperty Property;
+    public GameObject AccessObject;
     
 
     private void Start()
     {
         ChangedStateSprite.SetActive(false);
+        AccessObject.SetActive(false);
     }
 
 
@@ -26,6 +30,7 @@ public class DynamicObejct : MonoBehaviour, IInteractable
         {
             ChangedStateSprite.SetActive(true);
             inventory.GetComponent<Inventory>().currentSlot.GetComponent<Slot>().ClearSlots();
+            AccessObject.SetActive(true);
         }
     }
 }
