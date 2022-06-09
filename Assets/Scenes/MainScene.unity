@@ -2722,6 +2722,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectsToManage:
   - {fileID: 89904011}
+  UiRenderObjects:
+  - {fileID: 1687884941}
 --- !u!4 &1357671607
 Transform:
   m_ObjectHideFlags: 0
