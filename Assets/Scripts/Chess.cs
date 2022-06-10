@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Chess : MonoBehaviour
 {
     public GameObject ScreenPanel;
+    public GameObject ObtainItem;
 
     private bool isCorrectPassword = false;
 
@@ -15,6 +16,7 @@ public class Chess : MonoBehaviour
 
     void Start()
     {
+        ObtainItem.SetActive(false);
         ScreenPanel.SetActive(false);
         this.gameObject.SetActive(false);
     }
@@ -40,6 +42,7 @@ public class Chess : MonoBehaviour
                 Destroy(GameObject.Find("ScreenActivator"));
                 Destroy(ScreenPanel);
                 GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/chess_opened");
+                ObtainItem.SetActive(true);
             }
         }
     }
