@@ -1,0 +1,57 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using System;
+
+public class PuzzlePiece : MonoBehaviour, IPointerClickHandler
+{
+    private GameObject puzzle;
+
+    private Image changeSprite;
+
+    public void Start()
+    {
+        puzzle = GameObject.Find("Puzzle");
+    }
+
+    public void OnPointerClick(PointerEventData eventDate)
+    {
+        if (puzzle.GetComponent<Puzzle>().isCompleted == true)
+            return;
+
+        var puzzlepieces = FindObjectsOfType<PuzzlePiece>();
+
+        foreach (PuzzlePiece puzzlePiece in puzzlepieces)
+        {
+            if (int.Parse(this.gameObject.name.ToString().Substring(this.gameObject.name.Length - 1)) ==
+                int.Parse((puzzlePiece.gameObject.name.ToString().Substring(puzzlePiece.gameObject.name.Length - 1))) + 1
+                ||
+                int.Parse(this.gameObject.name.ToString().Substring(this.gameObject.name.Length - 1)) ==
+                int.Parse((puzzlePiece.gameObject.name.ToString().Substring(puzzlePiece.gameObject.name.Length - 1))) - 1
+                ||
+                int.Parse(this.gameObject.name.ToString().Substring(this.gameObject.name.Length - 1)) ==
+                int.Parse((puzzlePiece.gameObject.name.ToString().Substring(puzzlePiece.gameObject.name.Length - 1))) + 3
+                ||
+                int.Parse(this.gameObject.name.ToString().Substring(this.gameObject.name.Length - 1)) ==
+                int.Parse((puzzlePiece.gameObject.name.ToString().Substring(puzzlePiece.gameObject.name.Length - 1))) - 3)
+            {
+                if (puzzlePiece.gameObject.GetComponent<Image>().sprite.name == "mushroom puzzle_8")
+                {
+                    changeSprite = puzzlePiece.GetComponent<Image>();
+                    ChangeSprites(GetComponent<Image>(), changeSprite);
+
+                }
+            }
+
+        }
+
+        void ChangeSprites(Image firstSprite, Image secondSprite)
+        {
+            Sprite temp = firstSprite.sprite;
+            firstSprite.sprite = secondSprite.sprite;
+            secondSprite.sprite = temp;
+        }
+    }
+}
