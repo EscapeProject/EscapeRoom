@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class Chess : MonoBehaviour
 {
@@ -10,12 +11,16 @@ public class Chess : MonoBehaviour
 
     private bool isCorrectPassword = false;
 
+    private GameObject displayImage;
+
     public string CorrectPassword;
 
     private string inputPassword;
 
     void Start()
     {
+        displayImage = GameObject.Find("displayImage");
+
         ObtainItem.SetActive(false);
         ScreenPanel.SetActive(false);
         this.gameObject.SetActive(false);
@@ -24,6 +29,7 @@ public class Chess : MonoBehaviour
     void Update()
     {
         VerifyPassword();
+        HideDisplay();
     }
 
     void VerifyPassword()
@@ -46,4 +52,18 @@ public class Chess : MonoBehaviour
             }
         }
     }
+
+    void HideDisplay()
+    {
+        if (Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+        {
+            this.gameObject.SetActive(false);
+        }
+
+        if (displayImage.GetComponent<DisplayImage>().CurrentState == DisplayImage.State.normal)
+        {
+            this.gameObject.SetActive(false);
+        }
+    }
+
 }
