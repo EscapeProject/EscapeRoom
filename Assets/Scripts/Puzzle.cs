@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Puzzle : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public class Puzzle : MonoBehaviour
 
     void Update()
     {
+        if (CompletePuzzle())
+        {
+            Debug.Log("completed");
+        }
         HideDisplay();
     }
 
@@ -30,5 +35,25 @@ public class Puzzle : MonoBehaviour
         {
             this.gameObject.SetActive(false);
         }
+    }
+
+    bool CompletePuzzle()
+    {
+        if (isCompleted) return true;
+
+        isCompleted = true;
+
+        var puzzlePieces = FindObjectsOfType<PuzzlePiece>();
+
+        foreach(PuzzlePiece puzzlePiece in puzzlePieces)
+        {
+            if(!(int.Parse(puzzlePiece.gameObject.name.ToString().Substring(puzzlePiece.gameObject.name.Length - 1)) ==
+                int.Parse(puzzlePiece.gameObject.GetComponent<Image>().sprite.name.ToString().Substring(puzzlePiece.gameObject.GetComponent<Image>().sprite.name.Length - 1))))
+            {
+                isCompleted = false;
+            }
+        }
+
+        return isCompleted;
     }
 }
