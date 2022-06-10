@@ -8,12 +8,8 @@ public class Puzzle : MonoBehaviour
 {
     public bool isCompleted { get; private set; }
 
+    [SerializeField]
     private GameObject displayImage;
-
-    void Start()
-    {
-        displayImage = GameObject.Find("displayImage");
-    }
 
     void Update()
     {
