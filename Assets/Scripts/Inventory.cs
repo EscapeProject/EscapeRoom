@@ -32,7 +32,7 @@ public class Inventory : MonoBehaviour
                 Resources.Load<Sprite>("Inventory_items/empty_item");
             slot.GetComponent<Slot>().itemProperty = Slot.property.empty;
         }
-        currentSlot = slots.transform.GetChild(0).gameObject;
+        currentSlot = slots.transform.GetChild(7).gameObject;
         previousSlot = currentSlot;
     }
 

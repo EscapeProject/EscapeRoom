@@ -40,7 +40,8 @@ public class Slot : MonoBehaviour, IPointerClickHandler
     public void Combine()
     {
         if(inventory.GetComponent<Inventory>().previousSlot.GetComponent<Slot>().combinationItem ==
-            this.gameObject.GetComponent<Slot>().combinationItem && this.gameObject.GetComponent<Slot>().combinationItem != "")
+            this.gameObject.GetComponent<Slot>().combinationItem && this.gameObject.GetComponent<Slot>().combinationItem != "" &&
+            inventory.GetComponent<Inventory>().previousSlot.GetComponent<Slot>() != this.gameObject.GetComponent<Slot>())
         {
             GameObject combinedItem = Instantiate(Resources.Load<GameObject>("Combined_Items/" + combinationItem));
             
