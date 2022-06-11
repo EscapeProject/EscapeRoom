@@ -16,8 +16,8 @@ public class DisplayImage : MonoBehaviour
         get { return currentWall; }
         set
         {
-            if (value == 5) currentWall = 1;
-            else if (value == 0) currentWall = 4;
+            if (value == 4) currentWall = 1;
+            else if (value == 0) currentWall = 3;
             else currentWall = value;
         }
     }
@@ -35,7 +35,7 @@ public class DisplayImage : MonoBehaviour
     {
         if(currentWall != previousWall)
         {
-            GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/wall" + currentWall.ToString());
+            GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/@newSprites/wall" + currentWall.ToString());
         }
 
         previousWall = currentWall;
