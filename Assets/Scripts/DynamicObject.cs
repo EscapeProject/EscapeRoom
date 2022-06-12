@@ -10,7 +10,7 @@ public class DynamicObject : MonoBehaviour, IInteractable
 
     public string UnlockItem;
 
-    public GameObject ChangedStateSprite;
+    //public GameObject ChangedStateSprite;
 
     public enum InteractionProperty { simple_interaction, access_interaction}
     public InteractionProperty Property;
@@ -19,7 +19,7 @@ public class DynamicObject : MonoBehaviour, IInteractable
 
     private void Start()
     {
-        ChangedStateSprite.SetActive(false);
+        //ChangedStateSprite.SetActive(false);
         AccessObject.SetActive(false);
     }
 
@@ -28,7 +28,7 @@ public class DynamicObject : MonoBehaviour, IInteractable
     {
         if (inventory.GetComponent<Inventory>().currentSlot.gameObject.transform.GetChild(0).GetComponent<Image>().sprite.name == UnlockItem || UnlockItem == "")
         {
-            ChangedStateSprite.SetActive(true);
+            //ChangedStateSprite.SetActive(true);
             this.gameObject.layer = 2;
 
             if (Property == InteractionProperty.simple_interaction) return;

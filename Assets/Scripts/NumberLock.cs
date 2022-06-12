@@ -8,8 +8,8 @@ public class NumberLock : MonoBehaviour
 
     public GameObject OpenLockerSprite;
 
-    [SerializeField]
-    private GameObject displayImage;
+    //[SerializeField]
+    //private GameObject displayImage;
     [HideInInspector]
     public Sprite[] numberSprites;
     [HideInInspector]
@@ -30,7 +30,7 @@ public class NumberLock : MonoBehaviour
     private void Update()
     {
         OpenLocker();
-        LayerManage();
+        //LayerManage();
     }
     private bool VerifyCorrectCode()
     {
@@ -63,23 +63,23 @@ public class NumberLock : MonoBehaviour
         }
     }
 
-    private void LayerManage()
-    {
-        if (isOpen) return;
+    //private void LayerManage()
+    //{
+    //    if (isOpen) return;
 
-        if(displayImage.GetComponent<DisplayImage>().CurrentState == DisplayImage.State.normal)
-        {
-            foreach(Transform child in transform)
-            {
-                child.gameObject.layer = 2;
-            }
-        }
-        else
-        {
-            foreach (Transform child in transform)
-            {
-                child.gameObject.layer = 0;
-            }
-        }
-    }
+    //    if(displayImage.GetComponent<DisplayImage>().CurrentState == DisplayImage.State.normal)
+    //    {
+    //        foreach(Transform child in transform)
+    //        {
+    //            child.gameObject.layer = 2;
+    //        }
+    //    }
+    //    else
+    //    {
+    //        foreach (Transform child in transform)
+    //        {
+    //            child.gameObject.layer = 0;
+    //        }
+    //    }
+    //}
 }

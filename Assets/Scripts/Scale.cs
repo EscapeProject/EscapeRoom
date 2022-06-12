@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Scale : MonoBehaviour
 {
-
+    [SerializeField]
+    private GameObject displayImage;
     public GameObject[] ScaleBoxes;
-    public int[] Weight = new int[5];
 
     public GameObject ScaleDisplayer;
+    public GameObject cleargift;
 
-    private GameObject displayImage;
+    [SerializeField]
     private Block[] blocks;
 
     public bool isSolved { get; private set; }
@@ -18,8 +19,8 @@ public class Scale : MonoBehaviour
     private void Start()
     {
         isSolved = false;
-        displayImage = GameObject.Find("displayImage");
-        blocks = FindObjectsOfType<Block>();
+        ScaleDisplayer.SetActive(false);
+        cleargift.SetActive(false);
     }
 
     private void Update()
@@ -29,16 +30,14 @@ public class Scale : MonoBehaviour
         if (VerifySolution() && !isSolved)
         {
             isSolved = true;
-
-            ScaleDisplayer.GetComponent<ChangeView>().SpriteName = "scaleopen";
-
-            displayImage.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/scale open");
+            ScaleDisplayer.SetActive(true);
+            cleargift.SetActive(true);
         }
     }
 
     private void Display()
     {
-        if (displayImage.GetComponent<SpriteRenderer>().sprite.name == "scale" || displayImage.GetComponent<SpriteRenderer>().sprite.name == "scale open")
+        if (displayImage.GetComponent<SpriteRenderer>().sprite.name == "wall1_jigsaw")
         {
             for (int i = 0; i < blocks.Length; i++)
             {

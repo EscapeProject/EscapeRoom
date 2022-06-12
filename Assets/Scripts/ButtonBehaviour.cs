@@ -12,12 +12,8 @@ public class ButtonBehaviour : MonoBehaviour
 
     public ButtonId ThisButtonId;
 
+    [SerializeField]
     private DisplayImage currentDisplay;
-
-    void Start()
-    {
-        currentDisplay = GameObject.Find("displayImage").GetComponent<DisplayImage>();
-    }
 
     void Update()
     {

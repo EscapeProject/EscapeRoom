@@ -10,20 +10,29 @@ public class Chess : MonoBehaviour
     public GameObject ObtainItem;
 
     private bool isCorrectPassword = false;
-
+    [SerializeField]
     private GameObject displayImage;
-
+    [SerializeField]
+    private Text screenPanelText;
+    [SerializeField]
+    private GameObject SceneActivator;
     public string CorrectPassword;
 
     private string inputPassword;
-
+    private bool isDestroyScreen;
     void Start()
     {
-        displayImage = GameObject.Find("displayImage");
-
+        isDestroyScreen = false;
         ObtainItem.SetActive(false);
         ScreenPanel.SetActive(false);
         this.gameObject.SetActive(false);
+    }
+    private void OnEnable()
+    {
+        if (!isDestroyScreen)
+        {
+            ScreenPanel?.SetActive(false);
+        }
     }
 
     void Update()
@@ -38,16 +47,16 @@ public class Chess : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Return))
         {
-            inputPassword = ScreenPanel.transform.Find("Text").GetComponent<Text>().text;
+            inputPassword = screenPanelText.text;
 
-            ScreenPanel.transform.Find("Text").GetComponent<Text>().text = "";
+            screenPanelText.text = "";
 
             if(inputPassword == CorrectPassword)
             {
                 isCorrectPassword = true;
-                Destroy(GameObject.Find("ScreenActivator"));
+                Destroy(SceneActivator);
                 Destroy(ScreenPanel);
-                GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/chess_opened");
+                isDestroyScreen = true;
                 ObtainItem.SetActive(true);
             }
         }

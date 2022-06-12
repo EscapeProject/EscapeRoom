@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ChangeView : MonoBehaviour, IInteractable
 {
@@ -17,8 +18,15 @@ public class ChangeView : MonoBehaviour, IInteractable
 
     public void Interact(DisplayImage currentDisplay)
     {
+        if (this.gameObject.name == "Gameclear")
+        {
+            SceneManager.LoadScene(1);
+            return;
+        }
+
         currentDisplay.GetComponent<SpriteRenderer>().sprite =
-            Resources.Load<Sprite>("Sprites/" + SpriteName);
+            Resources.Load<Sprite>("Sprites/@newSprites/" + SpriteName);
+        
         currentDisplay.CurrentState = DisplayImage.State.ChangedView;
 
         Camera.main.orthographicSize = initialCameraSize;

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ButtonHandler : MonoBehaviour
 {
+    [SerializeField]
     private DisplayImage currentDisplay;
 
     private float initialCameraSize;
@@ -11,7 +12,6 @@ public class ButtonHandler : MonoBehaviour
 
     void Start()
     {
-        currentDisplay = GameObject.Find("displayImage").GetComponent<DisplayImage>();
 
         initialCameraSize = Camera.main.orthographicSize;
         initialCameraposition = Camera.main.transform.position;
