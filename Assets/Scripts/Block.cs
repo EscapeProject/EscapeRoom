@@ -9,6 +9,8 @@ public class Block : MonoBehaviour, IDragHandler, IDropHandler
     public int indexOfBox { get; private set; }
 
     private Vector3 initialPosition;
+    [SerializeField]
+    private GameObject Scale;
 
     void Start()
     {
@@ -19,7 +21,7 @@ public class Block : MonoBehaviour, IDragHandler, IDropHandler
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (GameObject.Find("Scale").GetComponent<Scale>().isSolved) return;
+        if (Scale.GetComponent<Scale>().isSolved) return;
 
         Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = new Vector3(newPosition.x, newPosition.y, transform.position.z);
@@ -29,7 +31,7 @@ public class Block : MonoBehaviour, IDragHandler, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
-        var scale = GameObject.Find("Scale");
+        var scale = Scale;
 
         bool dropedInsideOfBox = false;
 
