@@ -10,12 +10,16 @@ public class Puzzle : MonoBehaviour
 
     [SerializeField]
     private GameObject displayImage;
+    [SerializeField]
+    private GameObject slidePuzzle;
 
     void Update()
     {
         if (CompletePuzzle())
         {
-            Debug.Log("completed");
+            GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/@newSprites/slidePuzzle_hint");
+            slidePuzzle.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/@newSprites/slidePuzzle_hint");
+            DeleteChilds();
         }
         HideDisplay();
     }
@@ -51,5 +55,19 @@ public class Puzzle : MonoBehaviour
         }
 
         return isCompleted;
+    }
+
+    public void DeleteChilds()
+    {
+
+        var child = this.GetComponentsInChildren<Transform>();
+
+        foreach (var iter in child)
+        {
+            if (iter != this.transform)
+            {
+                Destroy(iter.gameObject);
+            }
+        }
     }
 }

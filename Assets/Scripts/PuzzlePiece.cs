@@ -37,7 +37,7 @@ public class PuzzlePiece : MonoBehaviour, IPointerClickHandler
                 int.Parse(this.gameObject.name.ToString().Substring(this.gameObject.name.Length - 1)) ==
                 int.Parse((puzzlePiece.gameObject.name.ToString().Substring(puzzlePiece.gameObject.name.Length - 1))) - 3)
             {
-                if (puzzlePiece.gameObject.GetComponent<Image>().sprite.name == "mushroom puzzle_8")
+                if (puzzlePiece.gameObject.GetComponent<Image>().sprite.name == "slidePuzzle_pieces_0")
                 {
                     changeSprite = puzzlePiece.GetComponent<Image>();
                     ChangeSprites(GetComponent<Image>(), changeSprite);
