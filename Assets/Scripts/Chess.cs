@@ -47,7 +47,6 @@ public class Chess : MonoBehaviour
                 isCorrectPassword = true;
                 Destroy(GameObject.Find("ScreenActivator"));
                 Destroy(ScreenPanel);
-                GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/chess_opened");
                 ObtainItem.SetActive(true);
             }
         }
